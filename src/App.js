@@ -1,18 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './component/Header/Header';
+import Dashboard from './component/Dashboard/Dashboard';
+import Form from './component/Form/Form';
+import Product from './component/Product/Product';
+import axios from 'axios';
+import routes from './routes.js'
+import {HashRouter} from 'react-router-dom';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state={
+      inventory:[],
+    }
+    // console.log(this.state.inventory)
+  }
+
+  // componentDidMount(){
+  //   axios.get(`http://localhost:4000/api/inventory`)
+  //        .then(res=>{
+  //          this.setState({inventory:res.data})
+  //        })
+  // }
+
+  // newInven=()=>{
+  //   axios.get(`http://localhost:4000/api/inventory`)
+  //        .then(res=> this.setState({inventory:res.data}))
+         
+  // }
+
   render() {
+    // let inventory = this.state.inventory.map((data,i)=>{
+    //   return <Product name={data.name} price={data.price} image={data.image} key={i} />
+    // })
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <HashRouter>
+        {routes}
+      </HashRouter>
+        {/* <Header />
+        <Dashboard inventory={this.state.inventory} />
+        <Form add={this.newInven} />
+        {inventory} */}
       </div>
     );
   }
